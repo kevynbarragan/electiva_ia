@@ -1,0 +1,304 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+  <diagram id="class_diagram_intent_purchase" name="Diagrama de Clases - Análisis de Intención de Compra">
+    <mxGraphModel dx="1426" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="DIAGRAMA DE CLASES - ANÁLISIS DE INTENCIÓN DE COMPRA EN TIENDA VIRTUAL" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="800" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_ingesta" value="CAPA DE INGESTA Y VALIDACIÓN" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="380" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="Dataset" value="ConjuntoDatos&#xa;&lt;&lt;Entidad&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_ingesta">
+          <mxGeometry x="20" y="40" width="340" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Dataset_attr" value="- ruta_archivo: str&#xa;- datos_crudos: DataFrame&#xa;- metadatos: dict&#xa;- columnas: List[str]&#xa;- dimensiones: tuple" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="Dataset">
+          <mxGeometry y="40" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Dataset_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="Dataset">
+          <mxGeometry y="110" width="340" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="Dataset_ops" value="+ obtener_info(): dict&#xa;+ es_valido(): bool&#xa;+ obtener_original(): DataFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="Dataset">
+          <mxGeometry y="118" width="340" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="DataLoader" value="CargadorDatos&#xa;&lt;&lt;Servicio&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_ingesta">
+          <mxGeometry x="20" y="230" width="340" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="DataLoader_ops" value="+ cargar_csv(ruta_archivo: str, sep: str): ConjuntoDatos&#xa;+ cargar_excel(ruta_archivo: str, hoja: str): ConjuntoDatos&#xa;+ cargar_json(ruta_archivo: str): ConjuntoDatos&#xa;+ (RF-001) cargar_dataset()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="DataLoader">
+          <mxGeometry y="40" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="DataValidator" value="ValidadorDatos&#xa;&lt;&lt;Servicio&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_ingesta">
+          <mxGeometry x="20" y="360" width="340" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="DataValidator_ops" value="+ verificar_columnas_requeridas(cd: ConjuntoDatos, cols: List[str]): bool&#xa;+ detectar_faltantes(cd: ConjuntoDatos): dict&#xa;+ detectar_inconsistencias(cd: ConjuntoDatos): dict&#xa;+ (RF-002) validar_dataset()&#xa;+ (RF-003) identificar_problemas()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="DataValidator">
+          <mxGeometry y="40" width="340" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_loader_dataset" value="crea" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="pkg_ingesta" source="DataLoader" target="Dataset">
+          <mxGeometry x="-0.3333" y="15" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_validator_dataset" value="valida" style="endArrow=open;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;" edge="1" parent="pkg_ingesta" source="DataValidator" target="Dataset">
+          <mxGeometry x="-0.1429" y="-15" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="420" />
+              <mxPoint x="400" y="120" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pkg_proc" value="CAPA DE PROCESAMIENTO, EDA E INGENIERÍA DE VARIABLES" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="470" y="80" width="380" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="DataPreprocessor" value="PreprocesadorDatos&#xa;&lt;&lt;Servicio&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_proc">
+          <mxGeometry x="20" y="40" width="340" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="DataPreprocessor_ops" value="+ manejar_faltantes(cd: ConjuntoDatos, estrategia: str): ConjuntoDatos&#xa;+ codificar_categoricas(cd: ConjuntoDatos): ConjuntoDatos&#xa;+ normalizar_numericas(cd: ConjuntoDatos): ConjuntoDatos&#xa;+ limpiar(cd: ConjuntoDatos): ConjuntoDatos&#xa;+ (RF-004) preparar_datos()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="DataPreprocessor">
+          <mxGeometry y="40" width="340" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="EDAAnalyzer" value="AnalizadorEDA&#xa;&lt;&lt;Servicio&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_proc">
+          <mxGeometry x="20" y="190" width="340" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="EDAAnalyzer_ops" value="+ describir(cd: ConjuntoDatos): dict&#xa;+ matriz_correlacion(cd: ConjuntoDatos): DataFrame&#xa;+ distribuciones(cd: ConjuntoDatos): dict&#xa;+ (RF-005) analisis_exploratorio()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="EDAAnalyzer">
+          <mxGeometry y="40" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="FeatureSelector" value="SelectorVariables&#xa;&lt;&lt;Servicio&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_proc">
+          <mxGeometry x="20" y="320" width="340" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="FeatureSelector_ops" value="+ seleccionar_por_correlacion(cd: ConjuntoDatos, objetivo: str): List[str]&#xa;+ seleccionar_univariado(cd: ConjuntoDatos, objetivo: str): List[str]&#xa;+ seleccionar_variables(cd: ConjuntoDatos, objetivo: str): List[str]&#xa;+ (RF-006) identificar_variables_relevantes()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="FeatureSelector">
+          <mxGeometry y="40" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="PreparedDataset" value="ConjuntoPreparado&#xa;&lt;&lt;Entidad&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_proc">
+          <mxGeometry x="20" y="450" width="340" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="PreparedDataset_attr" value="- X: DataFrame&#xa;- y: Series&#xa;- nombres_variables: List[str]&#xa;- objetivo: str&#xa;- info_division: dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="PreparedDataset">
+          <mxGeometry y="40" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="PreparedDataset_ops" value="+ obtener_entrenamiento_prueba(tam_prueba: float): tuple" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="PreparedDataset">
+          <mxGeometry y="110" width="340" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_prep_pd" value="produce" style="endArrow=open;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;" edge="1" parent="pkg_proc" source="DataPreprocessor" target="PreparedDataset">
+          <mxGeometry x="0.2" y="-15" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="105" />
+              <mxPoint x="400" y="515" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_fs_pd" value="usa" style="endArrow=open;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;" edge="1" parent="pkg_proc" source="FeatureSelector" target="PreparedDataset">
+          <mxGeometry x="-0.25" y="15" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pkg_ml" value="CAPA DE APRENDIZAJE AUTOMÁTICO" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="890" y="80" width="380" height="650" as="geometry" />
+        </mxCell>
+        <mxCell id="MLModel" value="&lt;&lt;Abstracta&gt;&gt;&#xa;ModeloML" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_ml">
+          <mxGeometry x="20" y="40" width="340" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="MLModel_attr" value="# modelo: BaseEstimator&#xa;# entrenado: bool&#xa;# parametros: dict&#xa;# nombres_variables: List[str]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="MLModel">
+          <mxGeometry y="40" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MLModel_ops" value="+ abstracto entrenar(X,y): void&#xa;+ abstracto predecir(X): ndarray&#xa;+ abstracto predecir_proba(X): ndarray&#xa;+ esta_entrenado(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="MLModel">
+          <mxGeometry y="100" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PurchaseIntentModel" value="ModeloIntencionCompra&#xa;&lt;&lt;Concreta&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_ml">
+          <mxGeometry x="20" y="190" width="340" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="PurchaseIntentModel_ops" value="+ definir_clasificador(clf: BaseEstimator): void&#xa;+ entrenar(X,y): void (RF-007)&#xa;+ predecir(X): ndarray (RF-009)&#xa;+ predecir_proba(X): ndarray&#xa;+ obtener_importancia_variables(): dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="PurchaseIntentModel">
+          <mxGeometry y="40" width="340" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gen_ml" value="hereda de" style="endArrow=block;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;dashed=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="pkg_ml" source="PurchaseIntentModel" target="MLModel">
+          <mxGeometry x="-0.2" y="15" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ModelEvaluator" value="EvaluadorModelo&#xa;&lt;&lt;Servicio&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_ml">
+          <mxGeometry x="20" y="330" width="340" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ModelEvaluator_ops" value="+ exactitud(y_real,y_pred): float&#xa;+ precision(y_real,y_pred): float&#xa;+ sensibilidad(y_real,y_pred): float&#xa;+ f1(y_real,y_pred): float&#xa;+ reporte_clasificacion(y_real,y_pred): dict (RF-008)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="ModelEvaluator">
+          <mxGeometry y="40" width="340" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="PurchaseIntentClassifier" value="ClasificadorIntencionCompra&#xa;&lt;&lt;Servicio&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_ml">
+          <mxGeometry x="20" y="470" width="340" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="PurchaseIntentClassifier_ops" value="+ clasificar(modelo: ModeloIntencionCompra, X: DataFrame): List[ResultadoClasificacion]&#xa;+ clasificar_individual(modelo: ModeloIntencionCompra, fila: Series): ResultadoClasificacion&#xa;+ (RF-009) clasificar_intencion()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="PurchaseIntentClassifier">
+          <mxGeometry y="40" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_eval_uses" value="evalúa" style="endArrow=open;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;" edge="1" parent="pkg_ml" source="ModelEvaluator" target="PurchaseIntentModel">
+          <mxGeometry x="-0.3333" y="15" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="390" />
+              <mxPoint x="400" y="250" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_clf_uses" value="usa" style="endArrow=open;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;" edge="1" parent="pkg_ml" source="PurchaseIntentClassifier" target="PurchaseIntentModel">
+          <mxGeometry x="-0.1429" y="-15" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="525" />
+              <mxPoint x="420" y="230" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pkg_results" value="CAPA DE RESULTADOS, VISUALIZACIÓN Y REPORTE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="470" y="640" width="380" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="ClassificationResult" value="ResultadoClasificacion&#xa;&lt;&lt;ObjetoValor&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_results">
+          <mxGeometry x="20" y="40" width="340" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="ClassificationResult_attr" value="- id_registro: str&#xa;- clase_predicha: str {baja|media|alta}&#xa;- probabilidad: float&#xa;- confianza: float&#xa;- variables_usadas: List[str]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="ClassificationResult">
+          <mxGeometry y="40" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ClassificationResult_ops" value="+ a_dict(): dict&#xa;+ a_fila(): tuple" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="ClassificationResult">
+          <mxGeometry y="110" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AnalysisReport" value="ReporteAnalisis&#xa;&lt;&lt;Entidad&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_results">
+          <mxGeometry x="20" y="200" width="340" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="AnalysisReport_attr" value="- id_reporte: str&#xa;- info_dataset: dict&#xa;- resumen_eda: dict&#xa;- variables_seleccionadas: List[str]&#xa;- metricas: dict&#xa;- resultados: List[ResultadoClasificacion]&#xa;- generado_en: datetime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AnalysisReport">
+          <mxGeometry y="40" width="340" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="AnalysisReport_ops" value="+ (RF-010) consultar_resultados()&#xa;+ (RF-011) a_tabla()&#xa;+ (RF-012) datos_para_graficos()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AnalysisReport">
+          <mxGeometry y="130" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VisualizationService" value="ServicioVisualizacion&#xa;&lt;&lt;Servicio&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_results">
+          <mxGeometry x="20" y="380" width="340" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="VisualizationService_ops" value="+ generar_tabla(reporte: ReporteAnalisis): dict&#xa;+ generar_barras(reporte: ReporteAnalisis): dict&#xa;+ generar_torta(reporte: ReporteAnalisis): dict&#xa;+ generar_metricas(reporte: ReporteAnalisis): dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="VisualizationService">
+          <mxGeometry y="40" width="340" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_report_results" value="contiene" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="pkg_results" source="AnalysisReport" target="ClassificationResult">
+          <mxGeometry x="-0.25" y="15" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_vis_report" value="prepara datos" style="endArrow=open;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;" edge="1" parent="pkg_results" source="VisualizationService" target="AnalysisReport">
+          <mxGeometry x="-0.2" y="15" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="425" />
+              <mxPoint x="400" y="280" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pkg_api" value="CAPA DE CONTROLADOR / ORQUESTACIÓN (BACKEND)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="890" y="780" width="380" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="AnalysisJob" value="TrabajoAnalisis&#xa;&lt;&lt;Sesión/Orquestador&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_api">
+          <mxGeometry x="20" y="40" width="340" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="AnalysisJob_attr" value="- id_trabajo: str&#xa;- estado: str {pendiente|ejecutando|terminado|error}&#xa;- dataset: ConjuntoDatos&#xa;- preparado: ConjuntoPreparado&#xa;- modelo: ModeloIntencionCompra&#xa;- reporte: ReporteAnalisis" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AnalysisJob">
+          <mxGeometry y="40" width="340" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AnalysisJob_ops" value="+ ejecutar_pipeline(): ReporteAnalisis (RF-014)&#xa;+ ejecutar_eda(): void&#xa;+ ejecutar_entrenamiento(): void&#xa;+ ejecutar_clasificacion(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AnalysisJob">
+          <mxGeometry y="120" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="DataAPIController" value="ControladorAPIDatos&#xa;&lt;&lt;Controlador (FastAPI)&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_api">
+          <mxGeometry x="20" y="220" width="340" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="DataAPIController_ops" value="+ post_subir(archivo): respuesta&#xa;+ post_analizar(id_trabajo): respuesta&#xa;+ get_resultados(id_trabajo): respuesta&#xa;+ get_graficos(id_trabajo, tipo): respuesta" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="DataAPIController">
+          <mxGeometry y="40" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_api_job" value="coordina" style="endArrow=open;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;" edge="1" parent="pkg_api" source="DataAPIController" target="AnalysisJob">
+          <mxGeometry x="-0.25" y="15" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pkg_error" value="CAPA DE MANEJO DE ERRORES" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="50" y="620" width="380" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="AppError" value="&lt;&lt;Abstracta&gt;&gt;&#xa;ErrorApp" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_error">
+          <mxGeometry x="20" y="40" width="340" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AppError_attr" value="# codigo: str&#xa;# mensaje: str&#xa;# fecha_hora: datetime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="AppError">
+          <mxGeometry y="40" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="DataProcessingError" value="ErrorProcesamientoDatos&#xa;&lt;&lt;Concreta&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_error">
+          <mxGeometry x="20" y="140" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MLError" value="ErrorML&#xa;&lt;&lt;Concreta&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_error">
+          <mxGeometry x="200" y="140" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ErrorHandler" value="ManejadorErrores&#xa;&lt;&lt;Servicio&gt;&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="pkg_error">
+          <mxGeometry x="20" y="220" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ErrorHandler_ops" value="+ manejar(err: ErrorApp): dict (RF-013)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="ErrorHandler">
+          <mxGeometry y="40" width="340" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_dp" value="hereda de" style="endArrow=block;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;" edge="1" parent="pkg_error" source="DataProcessingError" target="AppError">
+          <mxGeometry x="-0.3333" y="15" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="120" />
+              <mxPoint x="190" y="120" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ext_mlerr" value="hereda de" style="endArrow=block;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;" edge="1" parent="pkg_error" source="MLError" target="AppError">
+          <mxGeometry x="-0.3333" y="-15" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="120" />
+              <mxPoint x="190" y="120" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_eh_err" value="gestiona" style="endArrow=open;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;" edge="1" parent="pkg_error" source="ErrorHandler" target="AppError">
+          <mxGeometry x="0.1429" y="-15" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="250" />
+              <mxPoint x="400" y="80" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cross1" value="usa" style="endArrow=open;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;dashed=1;" edge="1" parent="1" source="DataPreprocessor" target="Dataset">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cross2" value="entrena con" style="endArrow=open;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;dashed=1;" edge="1" parent="1" source="PurchaseIntentModel" target="PreparedDataset">
+          <mxGeometry x="0.0035" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="330" />
+              <mxPoint x="860" y="595" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cross3" value="genera" style="endArrow=open;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;dashed=1;" edge="1" parent="1" source="PurchaseIntentClassifier" target="ClassificationResult">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="880" y="595" />
+              <mxPoint x="880" y="750" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cross4" value="compone" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;rounded=0;dashed=0;" edge="1" parent="1" source="AnalysisJob" target="AnalysisReport">
+          <mxGeometry x="-0.1" y="-15" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="900" />
+              <mxPoint x="870" y="920" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cross5" value="usa servicios" style="endArrow=open;html=1;endSize=12;startArrow=none;startFill=0;rounded=0;dashed=1;" edge="1" parent="1" source="AnalysisJob" target="DataLoader">
+          <mxGeometry x="-0.8" y="-15" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="30" y="900" />
+              <mxPoint x="30" y="365" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="LEYENDA: &lt;&lt;Entidad&gt;&gt;=Dominio | &lt;&lt;ObjetoValor&gt;&gt;=Valor | &lt;&lt;Servicio&gt;&gt;=Lógica | &lt;&lt;Controlador&gt;&gt;=API | &lt;&lt;Abstracta&gt;&gt;=Generalización | crea/contiene/compone=Agregación/Composición | usa=Asociación | hereda de=Herencia" style="text;html=1;strokeColor=#999999;fillColor=#f5f5f5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1110" width="1220" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
