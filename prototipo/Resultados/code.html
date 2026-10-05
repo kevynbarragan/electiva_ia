@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed-dim": "#b4c5ff", "outline": "#737686", "on-surface": "#0b1c30", "on-tertiary": "#ffffff", "surface-container": "#e5eeff", "on-error-container": "#93000a", "surface-container-low": "#eff4ff", "on-secondary-fixed-variant": "#3f465c", "primary-fixed": "#dbe1ff", "on-secondary-fixed": "#131b2e", "tertiary": "#3e3fcc", "on-primary-fixed": "#00174b", "surface-container-high": "#dce9ff", "error-container": "#ffdad6", "on-secondary": "#ffffff", "inverse-surface": "#213145", "surface-tint": "#0053db", "on-secondary-container": "#5c647a", "surface-bright": "#f8f9ff", "on-tertiary-container": "#f1eeff", "tertiary-fixed": "#e1e0ff", "on-surface-variant": "#434655", "on-tertiary-fixed-variant": "#2f2ebe", "background": "#f8f9ff", "on-error": "#ffffff", "on-background": "#0b1c30", "surface-container-highest": "#d3e4fe", "on-primary": "#ffffff", "secondary-container": "#dae2fd", "surface-container-lowest": "#ffffff", "tertiary-container": "#585be6", "secondary-fixed": "#dae2fd", "surface-variant": "#d3e4fe", "primary-container": "#2563eb", "error": "#ba1a1a", "primary": "#004ac6", "secondary": "#565e74", "surface": "#f8f9ff", "inverse-primary": "#b4c5ff", "on-primary-container": "#eeefff", "on-tertiary-fixed": "#07006c", "inverse-on-surface": "#eaf1ff", "surface-dim": "#cbdbf5", "on-primary-fixed-variant": "#003ea8", "outline-variant": "#c3c6d7", "tertiary-fixed-dim": "#c0c1ff", "secondary-fixed-dim": "#bec6e0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "1.5rem", "gutter-lg": "2rem", "gutter-sm": "1rem", "space-lg": "1.5rem", "space-md": "1rem", "margin-mobile": "1rem", "margin": "2rem", "space-xl": "2rem", "space-xs": "0.25rem", "space-sm": "0.5rem" }, "fontFamily": { "headline-xl": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "code-sm": ["JetBrains Mono"], "label-md": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "metric-md": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "metric-xl": ["Plus Jakarta Sans"] }, "fontSize": { "headline-xl": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.005em", "fontWeight": "600" }], "code-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-xl-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }], "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "metric-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "metric-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }] } } } };</script></head><body class="bg-surface text-on-surface font-body-md text-body-md"><aside class="fixed left-0 top-0 h-screen w-64 bg-on-background text-inverse-on-surface z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.12)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="px-space-md py-space-md flex flex-col gap-space-xs"><div class="flex items-center gap-space-sm"><img alt="INSIGHTBUY Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UYMMLN_Fz1yqr4Q3qTDR5tRbmSjYvDSNsStAy8mHa0Hnk8HnVUuYMnqC2LGQB_HJxG7HH-SRRo9iM0mJcrzEUdFThyOZbU21zxmmn5vm5G5aC6bOpesUPl1KA35vjkKTg3LWFAQYJYWVXmsnKVD0cVkRRHo13SAQ2gDzQXewWhnZyVszY8antYt6hzibVjjra2rJ4SPT7aq6et_wZ70qCMD8-L6sDXcOsW2PXlSHWlVJACRPg8FoWKjavL"/><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-surface-container-lowest">INSIGHTBUY</span></div><p class="font-label-sm text-label-sm text-outline-variant font-medium">v1.4 - Proyecto de Grado Ing. de Sistemas</p></div><nav class="flex-1 px-space-sm flex flex-col gap-space-xs mt-space-sm" data-active-classes="bg-primary-container text-on-primary font-label-md rounded-lg shadow-sm"><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">space_dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="cargar-dataset" href="#"><span class="material-symbols-outlined text-[20px]">upload_file</span><span>Cargar dataset</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="procesamiento-de-datos" href="#"><span class="material-symbols-outlined text-[20px]">manufacturing</span><span>Procesamiento de datos</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="analisis-exploratorio" href="#"><span class="material-symbols-outlined text-[20px]">monitoring</span><span>Análisis exploratorio</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="machine-learning" href="#"><span class="material-symbols-outlined text-[20px]">psychology</span><span>Machine Learning</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="predicciones" href="#"><span class="material-symbols-outlined text-[20px]">online_prediction</span><span>Predicciones</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-all" data-path="resultados-y-reportes" href="#"><span class="material-symbols-outlined text-[20px]">assessment</span><span>Resultados y reportes</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="configuracion" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Configuración</span></a></nav></div><div class="p-space-sm m-space-sm bg-inverse-surface/60 rounded-lg"><div class="flex items-center gap-space-xs"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span><span class="font-label-sm text-label-sm text-surface font-semibold">FastAPI Backend</span></div><p class="font-code-sm text-code-sm text-outline-variant mt-space-xs">Conectado (latencia 24ms)</p></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest z-40 px-space-margin border-b border-surface-container-high flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm"><h1 class="font-headline-sm text-headline-sm text-on-surface">Panel de análisis</h1><span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm">Semillero de Datos &amp; ML</span></div><div class="relative hidden xl:flex items-center ml-space-md"><span class="material-symbols-outlined absolute left-3 text-secondary text-[18px]">search</span><input class="w-80 h-9 pl-9 pr-14 rounded-lg bg-surface text-on-surface font-body-sm text-body-sm border border-surface-container-high focus:outline-none focus:border-primary" placeholder="Buscar modelos, variables, reportes..." type="text"/><span class="absolute right-2 px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-[10px]">Ctrl + K</span></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-surface border border-surface-container-high"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span><span class="font-label-sm text-label-sm text-on-surface-variant">Pipeline ML: Operativo</span></div><button class="relative p-1.5 rounded-lg text-secondary hover:bg-surface hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary"></span></button><div class="flex items-center gap-space-sm pl-space-xs border-l border-surface-container-high"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCGGjPMx2fDDs8TS3oYOfP3anEen6DL1FSnIwkvn6SCbTOa1_y3uoRWVEtKil8A9fc1-E4DrTFG0EjK3904XfLadck3zjcO3zNHWvGUEA8JF8UyoBFCQH5ooi_ggOpEJ4A8bZ8cHALteyU7sVbz3YkogW4ezmL_Y9xARH1r_XkWc-DgJWY_a4RQ9eX7dtBDZ4pCfEVmO9skMDXjWlcgrFkNxdNYEvN_r1o8vxsJQ-wkXUkykslBg_I3w"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">Ing. Carlos Mendoza</span><span class="font-label-sm text-label-sm text-secondary leading-tight">Data Scientist / Analista</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="flex-1 pt-16 w-full px-space-margin pb-space-xl bg-surface"><div class="flex flex-col w-full">
+<!-- BREADCRUMB & METADATA -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-xs text-outline font-label-md text-label-md">
+<span>Proyecto de Ingeniería de Sistemas</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Pipeline Analítico</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Módulo 06: Resultados y Reportes Ejecutivos</span>
+</div>
+<div class="flex items-center gap-space-xs font-code-sm text-code-sm text-secondary">
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>Pipeline v1.4 • Generado: 24 Oct 2024, 16:42 UTC</span>
+</div>
+</div>
+<!-- PAGE HEADER & ACTION CONTROLS -->
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-lg mb-space-xl">
+<div class="flex flex-col gap-space-xs">
+<div class="flex flex-wrap items-center gap-space-sm">
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">Resultados del análisis</h1>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container/10 text-primary font-label-sm text-label-sm uppercase tracking-wider">Informe Final v1.4</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">Dataset Evaluado: 12.205 instancias</span>
+</div>
+<p class="font-body-lg text-body-lg text-secondary max-w-3xl">
+        Consulta e interpreta los resultados consolidados obtenidos por el clasificador Random Forest optimizado para la estimación de intención de compra en comercio electrónico.
+      </p>
+</div>
+<!-- Actions Toolbar -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-all shadow-sm font-label-lg text-label-lg" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">download</span>
+<span>Exportar resultados CSV</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-lowest text-secondary hover:text-on-surface hover:bg-surface-container transition-all shadow-sm font-label-lg text-label-lg" type="button">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span>Compartir informe</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-all shadow-md font-label-lg text-label-lg" type="button">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+<span>Generar reporte PDF / Ejecutivo</span>
+</button>
+</div>
+</div>
+<!-- SECTION 1: RESUMEN GENERAL DE PREDICCIONES (TARJETAS KPI EJECUTIVAS) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-gutter mb-space-xl">
+<!-- KPI 1 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Total Sesiones Evaluadas</span>
+<span class="font-metric-xl text-metric-xl text-on-surface mt-space-xs">12.205</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">database</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low/40 rounded-lg p-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">2.441 test (20% split)</span>
+<span class="inline-flex items-center gap-1 font-code-sm text-code-sm text-primary font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Calidad 98.8%
+        </span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Conversión Detectada</span>
+<span class="font-metric-xl text-metric-xl text-on-surface mt-space-xs">1.908</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">shopping_cart_checkout</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low/40 rounded-lg p-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">15.6% del total global</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-medium">312 TP (Test Set)</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Alta Intención Estimada</span>
+<span class="font-metric-xl text-metric-xl text-on-surface mt-space-xs">428</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">bolt</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low/40 rounded-lg p-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">Probabilidad P ≥ 70%</span>
+<span class="inline-flex items-center gap-1 font-code-sm text-code-sm text-primary font-semibold">
+          92.4% Efectividad
+        </span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Precisión Global Modelo</span>
+<span class="font-metric-xl text-metric-xl text-primary mt-space-xs">89.4%</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low/40 rounded-lg p-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">+4.2% vs Baseline LR</span>
+<span class="font-code-sm text-code-sm text-primary font-medium">F1: 84.3%</span>
+</div>
+</div>
+</section>
+<!-- SECTION 2: DISTRIBUCIÓN PORCENTUAL & COMPARACIÓN COMPRADORES VS NO COMPRADORES -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-space-xl">
+<!-- Columna Izquierda: Distribución Porcentual -->
+<div class="lg:col-span-6 rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">donut_large</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Distribución de Intención de Compra</h2>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-code-sm text-code-sm">n = 2.441 test</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-space-md">
+          Clasificación algorítmica de sesiones según la probabilidad a posteriori generada por el estimador de bosque aleatorio.
+        </p>
+<!-- Donut SVG Visualization & Segment breakdown -->
+<div class="grid grid-cols-1 sm:grid-cols-12 gap-space-md items-center py-space-sm">
+<div class="sm:col-span-5 flex justify-center">
+<div class="relative w-36 h-36">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<!-- Background track -->
+<circle class="text-surface-container" cx="50" cy="50" fill="none" r="38" stroke="currentColor" stroke-width="14"></circle>
+<!-- Segment Baja: 51.5% -> 51.5 * 2.3876 = 122.9 / 238.76 -->
+<circle class="text-secondary/70" cx="50" cy="50" fill="none" r="38" stroke="currentColor" stroke-dasharray="123 239" stroke-dashoffset="0" stroke-width="14"></circle>
+<!-- Segment Media: 31.0% -> 74 / 239 -->
+<circle class="text-secondary-fixed-dim" cx="50" cy="50" fill="none" r="38" stroke="currentColor" stroke-dasharray="74 239" stroke-dashoffset="-123" stroke-width="14"></circle>
+<!-- Segment Alta: 17.5% -> 41.8 / 239 -->
+<circle class="text-primary" cx="50" cy="50" fill="none" r="38" stroke="currentColor" stroke-dasharray="42 239" stroke-dashoffset="-197" stroke-width="14"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">2.441</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-tight">Sesiones</span>
+</div>
+</div>
+</div>
+<!-- Detailed Legend Column -->
+<div class="sm:col-span-7 flex flex-col gap-space-sm">
+<!-- Alta Intención -->
+<div class="p-space-xs rounded-lg bg-surface-container-low flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded bg-primary"></span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Alta Intención</span>
+</div>
+<span class="font-code-sm text-code-sm text-primary font-bold">17.5%</span>
+</div>
+<div class="flex items-center justify-between text-secondary font-body-sm text-body-sm pl-5">
+<span>428 sesiones (P ≥ 0.70)</span>
+<span class="font-code-sm text-code-sm">Conv: 92.4%</span>
+</div>
+</div>
+<!-- Media Intención -->
+<div class="p-space-xs rounded-lg bg-surface-container-low flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded bg-secondary-fixed-dim"></span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Media Intención</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-bold">31.0%</span>
+</div>
+<div class="flex items-center justify-between text-secondary font-body-sm text-body-sm pl-5">
+<span>756 sesiones (0.35 ≤ P &lt; 0.70)</span>
+<span class="font-code-sm text-code-sm">Conv: 28.5%</span>
+</div>
+</div>
+<!-- Baja Intención -->
+<div class="p-space-xs rounded-lg bg-surface-container-low flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded bg-secondary/70"></span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Baja Intención</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-bold">51.5%</span>
+</div>
+<div class="flex items-center justify-between text-secondary font-body-sm text-body-sm pl-5">
+<span>1.257 sesiones (P &lt; 0.35)</span>
+<span class="font-code-sm text-code-sm">Conv: 1.8%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between text-secondary font-body-sm text-body-sm bg-surface-container-low/60 p-space-xs rounded-lg">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">insights</span>
+          Punto de corte probabilístico óptimo:
+        </span>
+<span class="font-code-sm text-code-sm text-on-surface font-bold">Threshold τ = 0.485</span>
+</div>
+</div>
+<!-- Columna Derecha: Comparación Compradores vs No Compradores -->
+<div class="lg:col-span-6 rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">compare_arrows</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Compradores vs. No Compradores</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-primary">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span> Compradores
+            </span>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-secondary">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest"></span> No Compradores
+            </span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-space-md">
+          Discrepancia empírica de métricas conductuales clave entre perfiles con conversión confirmada versus abandonos.
+        </p>
+<!-- Metric comparison rows -->
+<div class="flex flex-col gap-space-sm">
+<!-- Item 1: PageValues -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-md text-label-md text-on-surface">PageValues Promedio</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">+1.331% discrepancia</span>
+</div>
+<div class="grid grid-cols-12 items-center gap-2">
+<span class="col-span-3 font-code-sm text-code-sm text-primary font-bold text-left">27.2 pts</span>
+<div class="col-span-6 h-2 rounded-full bg-surface-container overflow-hidden flex">
+<div class="h-full bg-primary rounded-full" style="width: 88%"></div>
+</div>
+<span class="col-span-3 font-code-sm text-code-sm text-secondary text-right">1.9 pts</span>
+</div>
+</div>
+<!-- Item 2: Duración Producto -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-md text-label-md text-on-surface">Duración en Páginas Producto</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">+74.4% más tiempo</span>
+</div>
+<div class="grid grid-cols-12 items-center gap-2">
+<span class="col-span-3 font-code-sm text-code-sm text-primary font-bold text-left">3.820 s</span>
+<div class="col-span-6 h-2 rounded-full bg-surface-container overflow-hidden flex">
+<div class="h-full bg-primary rounded-full" style="width: 72%"></div>
+</div>
+<span class="col-span-3 font-code-sm text-code-sm text-secondary text-right">2.190 s</span>
+</div>
+</div>
+<!-- Item 3: Páginas Visitadas -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-md text-label-md text-on-surface">Páginas de Producto Visitadas</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">+118% volumen</span>
+</div>
+<div class="grid grid-cols-12 items-center gap-2">
+<span class="col-span-3 font-code-sm text-code-sm text-primary font-bold text-left">48 págs</span>
+<div class="col-span-6 h-2 rounded-full bg-surface-container overflow-hidden flex">
+<div class="h-full bg-primary rounded-full" style="width: 65%"></div>
+</div>
+<span class="col-span-3 font-code-sm text-code-sm text-secondary text-right">22 págs</span>
+</div>
+</div>
+<!-- Item 4: Bounce Rate -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-md text-label-md text-on-surface">Tasa de Rebote (Bounce Rate)</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">-79.2% fricción</span>
+</div>
+<div class="grid grid-cols-12 items-center gap-2">
+<span class="col-span-3 font-code-sm text-code-sm text-primary font-bold text-left">0.005</span>
+<div class="col-span-6 h-2 rounded-full bg-surface-container overflow-hidden flex">
+<div class="h-full bg-primary rounded-full" style="width: 20%"></div>
+</div>
+<span class="col-span-3 font-code-sm text-code-sm text-secondary text-right">0.024</span>
+</div>
+</div>
+<!-- Item 5: Exit Rate -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-md text-label-md text-on-surface">Tasa de Abandono (Exit Rate)</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">-59.6% fuga</span>
+</div>
+<div class="grid grid-cols-12 items-center gap-2">
+<span class="col-span-3 font-code-sm text-code-sm text-primary font-bold text-left">0.019</span>
+<div class="col-span-6 h-2 rounded-full bg-surface-container overflow-hidden flex">
+<div class="h-full bg-primary rounded-full" style="width: 32%"></div>
+</div>
+<span class="col-span-3 font-code-sm text-code-sm text-secondary text-right">0.047</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs text-secondary font-body-sm text-body-sm bg-surface-container-low/60 p-space-xs rounded-lg flex items-center justify-between">
+<span>Evaluado mediante prueba Mann-Whitney U</span>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">p-value &lt; 0.0001 (Significativo)</span>
+</div>
+</div>
+</section>
+<!-- SECTION 3: FEATURE IMPORTANCE & MÉTRICAS DEL MODELO -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-space-xl">
+<!-- Columna Izquierda: Feature Importance -->
+<div class="lg:col-span-7 rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">bar_chart</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Variables Predictoras Más Relevantes</h2>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary-container/10 text-primary font-label-sm text-label-sm font-semibold">Gini Impurity Importance</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-space-md">
+          Peso explicativo normalizado de los atributos calculados durante el ensamblado de 250 árboles de decisión.
+        </p>
+<!-- Feature Bars -->
+<div class="flex flex-col gap-space-sm">
+<!-- Feature 1 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-on-surface">1. PageValues</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-container/10 text-primary font-code-sm text-[10px] font-bold">Impacto Crítico</span>
+</div>
+<span class="font-code-sm text-code-sm text-primary font-bold">38.4%</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 38.4%"></div>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface">2. ExitRates</span>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">18.2%</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary/80 rounded-full" style="width: 18.2%"></div>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface">3. ProductRelated_Duration</span>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">14.5%</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary/70 rounded-full" style="width: 14.5%"></div>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface">4. ProductRelated (Páginas)</span>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">10.8%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary/60 rounded-full" style="width: 10.8%"></div>
+</div>
+</div>
+<!-- Feature 5 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface">5. BounceRates</span>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">7.6%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary/50 rounded-full" style="width: 7.6%"></div>
+</div>
+</div>
+<!-- Feature 6 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface">6. Mes (Noviembre / Mayo)</span>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">5.9%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary/40 rounded-full" style="width: 5.9%"></div>
+</div>
+</div>
+<!-- Feature 7 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface">7. VisitorType (Returning vs New)</span>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">4.6%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary/30 rounded-full" style="width: 4.6%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md p-space-sm bg-surface-container-low rounded-lg border-l-4 border-primary">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+<strong class="text-on-surface font-semibold">Observación de ingeniería:</strong> El <strong class="text-primary font-semibold">71.1%</strong> del poder explicativo de la inferencia se concentra en solo 3 variables: <code class="text-code-sm font-code-sm text-primary">PageValues</code>, <code class="text-code-sm font-code-sm text-primary">ExitRates</code> y la duración acumulada de navegación de producto.
+        </p>
+</div>
+</div>
+<!-- Columna Derecha: Métricas Consolidadas del Modelo -->
+<div class="lg:col-span-5 rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">analytics</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Métricas del Modelo</h2>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-code-sm text-code-sm font-semibold">RandomForest v1.4</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-space-md">
+          Evaluación cruzada (5-Fold Stratified CV) sobre partición ciega no observada.
+        </p>
+<div class="grid grid-cols-2 gap-space-sm mb-space-md">
+<!-- Metric Tile 1 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase">Accuracy Global</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold mt-1">89.4%</span>
+<span class="font-body-sm text-body-sm text-secondary mt-1">Exactitud de clasificación</span>
+</div>
+<!-- Metric Tile 2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase">Precision (PPV)</span>
+<span class="font-headline-lg text-headline-lg text-primary font-bold mt-1">86.1%</span>
+<span class="font-body-sm text-body-sm text-secondary mt-1">Baja tasa de falsas alarmas</span>
+</div>
+<!-- Metric Tile 3 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase">Recall / Sensibilidad</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold mt-1">82.7%</span>
+<span class="font-body-sm text-body-sm text-secondary mt-1">Captura de compradores reales</span>
+</div>
+<!-- Metric Tile 4 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase">F1-Score Ponderado</span>
+<span class="font-headline-lg text-headline-lg text-primary font-bold mt-1">84.3%</span>
+<span class="font-body-sm text-body-sm text-secondary mt-1">Balance ante desbalance</span>
+</div>
+</div>
+<!-- Additional Technical KPIs -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between p-space-xs rounded bg-surface-container-low/70">
+<span class="font-label-md text-label-md text-secondary">Área Bajo la Curva (AUC-ROC)</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">0.932 (Excelente)</span>
+</div>
+<div class="flex items-center justify-between p-space-xs rounded bg-surface-container-low/70">
+<span class="font-label-md text-label-md text-secondary">Latencia de Inferencia FastAPI</span>
+<span class="font-code-sm text-code-sm text-on-surface font-bold">8.1 ms / solicitud</span>
+</div>
+<div class="flex items-center justify-between p-space-xs rounded bg-surface-container-low/70">
+<span class="font-label-md text-label-md text-secondary">Hiperparámetros óptimos</span>
+<span class="font-code-sm text-code-sm text-secondary">n_est=250, max_d=14, min_spl=4</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between text-secondary font-label-sm text-label-sm">
+<span>Framework: Scikit-Learn 1.3 + FastAPI 0.104</span>
+<span class="text-primary font-semibold">Pipeline Verificado</span>
+</div>
+</div>
+</section>
+<!-- SECTION 4: TABLA DE RESULTADOS DE PREDICCIÓN (MUESTRA REPRESENTATIVA) -->
+<section class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm mb-space-xl flex flex-col">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md mb-space-md">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">table_chart</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Muestra Representativa de Resultados y Clasificaciones</h2>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+          Registro individual de inferencia en tiempo de ejecución para sesiones de la muestra independiente de validación.
+        </p>
+</div>
+<!-- Quick filters & Search -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<div class="flex items-center bg-surface-container rounded-lg p-0.5">
+<button class="px-space-xs py-1 rounded bg-surface-container-lowest font-label-sm text-label-sm text-on-surface shadow-xs font-semibold" type="button">Todas</button>
+<button class="px-space-xs py-1 rounded text-secondary hover:text-on-surface font-label-sm text-label-sm" type="button">Alta Intención</button>
+<button class="px-space-xs py-1 rounded text-secondary hover:text-on-surface font-label-sm text-label-sm" type="button">Falsos Positivos</button>
+<button class="px-space-xs py-1 rounded text-secondary hover:text-on-surface font-label-sm text-label-sm" type="button">Aciertos</button>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-secondary text-[16px]">search</span>
+<input class="w-48 h-8 pl-8 pr-3 rounded-lg bg-surface text-on-surface font-body-sm text-body-sm border-0 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Filtrar por sesión..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="w-full overflow-x-auto rounded-lg">
+<table class="w-full text-left border-collapse min-w-[850px]">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-space-sm px-space-md">ID Sesión</th>
+<th class="py-space-sm px-space-md">Perfil Usuario</th>
+<th class="py-space-sm px-space-md text-right">PageValues</th>
+<th class="py-space-sm px-space-md text-right">Págs Vistas</th>
+<th class="py-space-sm px-space-md">Intención Algorítmica</th>
+<th class="py-space-sm px-space-md">Probabilidad P(Revenue)</th>
+<th class="py-space-sm px-space-md">Resultado Real</th>
+<th class="py-space-sm px-space-md">Diagnóstico</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-space-md font-code-sm text-code-sm font-semibold text-primary">#SES-10492</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">person</span>
+                Returning
+              </span>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-code-sm font-semibold">34.80 pts</td>
+<td class="py-3 px-space-md text-right font-code-sm text-code-sm">52 págs</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-primary-container/10 text-primary font-label-sm text-label-sm font-semibold">Alta Intención</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 92.4%"></div>
+</div>
+<span class="font-code-sm text-code-sm text-primary font-bold">92.4%</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Compra Efectiva
+              </span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-primary-container/10 text-primary font-code-sm text-code-sm font-semibold">Acierto (TP)</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-space-md font-code-sm text-code-sm font-semibold text-primary">#SES-10488</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">person_add</span>
+                New Visitor
+              </span>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-code-sm font-semibold">18.50 pts</td>
+<td class="py-3 px-space-md text-right font-code-sm text-code-sm">38 págs</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-primary-container/10 text-primary font-label-sm text-label-sm font-semibold">Alta Intención</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 84.1%"></div>
+</div>
+<span class="font-code-sm text-code-sm text-primary font-bold">84.1%</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Compra Efectiva
+              </span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-primary-container/10 text-primary font-code-sm text-code-sm font-semibold">Acierto (TP)</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-space-md font-code-sm text-code-sm font-semibold text-primary">#SES-10485</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">person</span>
+                Returning
+              </span>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-code-sm font-semibold">6.20 pts</td>
+<td class="py-3 px-space-md text-right font-code-sm text-code-sm">26 págs</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Media Intención</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim rounded-full" style="width: 58.7%"></div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-bold">58.7%</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">cancel</span>
+                Sin Compra
+              </span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-code-sm text-code-sm">Zona Gris / Neutro</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-space-md font-code-sm text-code-sm font-semibold text-primary">#SES-10482</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">person</span>
+                Returning
+              </span>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-code-sm font-semibold">0.00 pts</td>
+<td class="py-3 px-space-md text-right font-code-sm text-code-sm">8 págs</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm font-semibold">Baja Intención</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary/70 rounded-full" style="width: 12.3%"></div>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-bold">12.3%</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">cancel</span>
+                Sin Compra
+              </span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-code-sm text-code-sm font-semibold">Acierto (TN)</span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-space-md font-code-sm text-code-sm font-semibold text-primary">#SES-10479</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">person</span>
+                Returning
+              </span>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-code-sm font-semibold">12.40 pts</td>
+<td class="py-3 px-space-md text-right font-code-sm text-code-sm">31 págs</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Media Intención</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim rounded-full" style="width: 64.2%"></div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-bold">64.2%</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Compra Efectiva
+              </span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-primary-container/10 text-primary font-code-sm text-code-sm font-semibold">Acierto (TP)</span>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-space-md font-code-sm text-code-sm font-semibold text-primary">#SES-10469</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">person_add</span>
+                New Visitor
+              </span>
+</td>
+<td class="py-3 px-space-md text-right font-code-sm text-code-sm font-semibold">41.10 pts</td>
+<td class="py-3 px-space-md text-right font-code-sm text-code-sm">64 págs</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-primary-container/10 text-primary font-label-sm text-label-sm font-semibold">Alta Intención</span>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 91.0%"></div>
+</div>
+<span class="font-code-sm text-code-sm text-primary font-bold">91.0%</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Compra Efectiva
+              </span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-primary-container/10 text-primary font-code-sm text-code-sm font-semibold">Acierto (TP)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="mt-space-md pt-space-sm flex flex-col sm:flex-row items-center justify-between gap-space-sm text-secondary font-label-sm text-label-sm">
+<div class="flex items-center gap-2">
+<span>Mostrando 6 de 2.441 sesiones evaluadas</span>
+<span class="text-outline-variant">•</span>
+<select class="bg-surface-container-low text-on-surface rounded px-2 py-0.5 text-label-sm border-0 focus:outline-none">
+<option>10 filas por pág.</option>
+<option>25 filas por pág.</option>
+<option>50 filas por pág.</option>
+</select>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 rounded flex items-center justify-center bg-surface-container hover:bg-surface-container-high transition-colors text-secondary" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="w-7 h-7 rounded flex items-center justify-center bg-primary text-on-primary font-semibold" type="button">1</button>
+<button class="w-7 h-7 rounded flex items-center justify-center hover:bg-surface-container transition-colors text-secondary" type="button">2</button>
+<button class="w-7 h-7 rounded flex items-center justify-center hover:bg-surface-container transition-colors text-secondary" type="button">3</button>
+<span class="px-1 text-secondary">...</span>
+<button class="w-7 h-7 rounded flex items-center justify-center hover:bg-surface-container transition-colors text-secondary" type="button">407</button>
+<button class="w-7 h-7 rounded flex items-center justify-center bg-surface-container hover:bg-surface-container-high transition-colors text-secondary" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 5: CONCLUSIONES DEL ANÁLISIS DE MINERÍA DE DATOS (SECCIÓN ACADÉMICA) -->
+<section class="rounded-xl bg-gradient-to-br from-surface-container-lowest via-surface-container-low to-surface-container p-space-lg shadow-sm mb-space-xl">
+<div class="flex items-start gap-space-md mb-space-lg">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm shrink-0">
+<span class="material-symbols-outlined text-[28px]">school</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-md text-headline-md text-on-surface">Conclusiones y Recomendaciones del Proyecto</h2>
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm font-semibold">Síntesis Tesis de Grado</span>
+</div>
+<p class="font-body-md text-body-md text-secondary mt-0.5">
+          Deducciones estadísticas e implicaciones prácticas extraídas tras la aplicación de técnicas de ensamble y muestreo balanceado.
+        </p>
+</div>
+</div>
+<!-- Grid de Conclusiones -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Tarjeta 1 -->
+<div class="rounded-lg bg-surface-container-lowest p-space-md shadow-xs flex flex-col justify-between">
+<div class="flex items-start gap-space-sm mb-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">search_insights</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Hallazgo de Máxima Incidencia (PageValues)</h3>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Correlación r = 0.49 con Revenue</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+          La navegación orientada a contenido con valor de página monetizable es el disparador con mayor correlación positiva directa. El análisis demostró que un umbral superior a <strong class="text-on-surface font-semibold">15.0 puntos</strong> incrementa la probabilidad de conversión a más del <strong class="text-primary font-semibold">82%</strong> de forma consistente.
+        </p>
+</div>
+<!-- Tarjeta 2 -->
+<div class="rounded-lg bg-surface-container-lowest p-space-md shadow-xs flex flex-col justify-between">
+<div class="flex items-start gap-space-sm mb-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">balance</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Mitigación del Sesgo de Clases</h3>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Técnica SMOTE + Random Forest</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+          La aplicación de sobremuestreo sintético (SMOTE) combinada con el estimador Random Forest permitió elevar el Recall de la clase minoritaria de un inicial <strong class="text-on-surface font-semibold">61.2% a un 82.7%</strong>, capturando oportunamente a la gran mayoría de compradores sin saturar la operación con falsos positivos.
+        </p>
+</div>
+<!-- Tarjeta 3 -->
+<div class="rounded-lg bg-surface-container-lowest p-space-md shadow-xs flex flex-col justify-between">
+<div class="flex items-start gap-space-sm mb-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Comportamiento Temporal y Fines de Semana</h3>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Weekend = True vs False</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+          Las sesiones registradas durante fines de semana exhiben un incremento relativo de conversión del <strong class="text-primary font-semibold">+14.5%</strong> y una reducción de fricción/rebote del <strong class="text-on-surface font-semibold">79%</strong>, recomendando el despliegue focalizado de micro-incentivos de compra en jornadas de descanso sabatino y dominical.
+        </p>
+</div>
+<!-- Tarjeta 4 -->
+<div class="rounded-lg bg-surface-container-lowest p-space-md shadow-xs flex flex-col justify-between">
+<div class="flex items-start gap-space-sm mb-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">speed</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Viabilidad de Implementación Industrial</h3>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Latencia &lt; 10ms en tiempo real</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+          El pipeline desarrollado demuestra absoluta idoneidad técnica para integrarse con sistemas de recomendación en tiempo real en tiendas e-commerce de alto tráfico, gracias a su latencia promedio de <strong class="text-on-surface font-semibold">8.1 ms</strong> y arquitectura desacoplada basada en microservicios FastAPI.
+        </p>
+</div>
+</div>
+</section>
+<!-- PIE DE PÁGINA INSTITUCIONAL -->
+<footer class="mt-space-md pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-secondary font-body-sm text-body-sm bg-surface-container-lowest p-space-md rounded-xl shadow-xs">
+<div class="flex flex-col gap-0.5 text-center md:text-left">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Proyecto de Grado: Sistema Inteligente de Estimación de Intención de Compra Online</span>
+<span class="text-secondary font-label-sm text-label-sm">Minería de Datos &amp; Clasificadores de Bosque Aleatorio • Facultad de Ingeniería de Sistemas</span>
+</div>
+<div class="flex items-center gap-space-sm text-outline-variant font-code-sm text-code-sm">
+<span class="text-secondary">INSIGHTBUY Analytics Platform v1.4</span>
+<span>•</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">Datos simulados / Académico</span>
+</div>
+</footer>
+</div></main></div></body></html>

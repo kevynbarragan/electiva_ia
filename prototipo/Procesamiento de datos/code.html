@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error-container": "#ffdad6", "primary": "#004ac6", "surface-container": "#e5eeff", "primary-fixed-dim": "#b4c5ff", "tertiary-fixed": "#e1e0ff", "on-background": "#0b1c30", "on-primary-fixed-variant": "#003ea8", "surface-container-low": "#eff4ff", "on-surface": "#0b1c30", "secondary-container": "#dae2fd", "on-tertiary": "#ffffff", "on-tertiary-container": "#f1eeff", "on-tertiary-fixed": "#07006c", "surface-container-high": "#dce9ff", "secondary": "#565e74", "on-surface-variant": "#434655", "tertiary": "#3e3fcc", "surface-container-lowest": "#ffffff", "on-secondary-container": "#5c647a", "primary-container": "#2563eb", "surface": "#f8f9ff", "on-primary-fixed": "#00174b", "surface-tint": "#0053db", "on-secondary-fixed-variant": "#3f465c", "primary-fixed": "#dbe1ff", "on-tertiary-fixed-variant": "#2f2ebe", "surface-dim": "#cbdbf5", "error": "#ba1a1a", "on-secondary-fixed": "#131b2e", "surface-container-highest": "#d3e4fe", "secondary-fixed-dim": "#bec6e0", "inverse-primary": "#b4c5ff", "outline-variant": "#c3c6d7", "background": "#f8f9ff", "inverse-on-surface": "#eaf1ff", "on-primary": "#ffffff", "tertiary-fixed-dim": "#c0c1ff", "surface-bright": "#f8f9ff", "on-error": "#ffffff", "on-primary-container": "#eeefff", "inverse-surface": "#213145", "secondary-fixed": "#dae2fd", "on-error-container": "#93000a", "on-secondary": "#ffffff", "tertiary-container": "#585be6", "outline": "#737686", "surface-variant": "#d3e4fe" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-lg": "2rem", "margin": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-xl": "2rem", "space-md": "1rem", "gutter-sm": "1rem", "margin-mobile": "1rem", "space-lg": "1.5rem", "gutter": "1.5rem" }, "fontFamily": { "label-lg": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "metric-md": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "code-sm": ["JetBrains Mono"], "metric-xl": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"] }, "fontSize": { "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.005em", "fontWeight": "600" }], "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-xl": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700" }], "metric-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }], "headline-xl-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "code-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "metric-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface text-on-surface font-body-md text-body-md"><aside class="fixed left-0 top-0 h-screen w-64 bg-on-background text-inverse-on-surface z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.12)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="px-space-md py-space-md flex flex-col gap-space-xs"><div class="flex items-center gap-space-sm"><img alt="INSIGHTBUY Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UYMMLN_Fz1yqr4Q3qTDR5tRbmSjYvDSNsStAy8mHa0Hnk8HnVUuYMnqC2LGQB_HJxG7HH-SRRo9iM0mJcrzEUdFThyOZbU21zxmmn5vm5G5aC6bOpesUPl1KA35vjkKTg3LWFAQYJYWVXmsnKVD0cVkRRHo13SAQ2gDzQXewWhnZyVszY8antYt6hzibVjjra2rJ4SPT7aq6et_wZ70qCMD8-L6sDXcOsW2PXlSHWlVJACRPg8FoWKjavL"/><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-surface-container-lowest">INSIGHTBUY</span></div><p class="font-label-sm text-label-sm text-outline-variant font-medium">v1.4 - Proyecto de Grado Ing. de Sistemas</p></div><nav class="flex-1 px-space-sm flex flex-col gap-space-xs mt-space-sm" data-active-classes="bg-primary-container text-on-primary font-label-md rounded-lg shadow-sm"><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">space_dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="cargar-dataset" href="#"><span class="material-symbols-outlined text-[20px]">upload_file</span><span>Cargar dataset</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-all" data-path="procesamiento-de-datos" href="#"><span class="material-symbols-outlined text-[20px]">manufacturing</span><span>Procesamiento de datos</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="analisis-exploratorio" href="#"><span class="material-symbols-outlined text-[20px]">monitoring</span><span>Análisis exploratorio</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="machine-learning" href="#"><span class="material-symbols-outlined text-[20px]">psychology</span><span>Machine Learning</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="predicciones" href="#"><span class="material-symbols-outlined text-[20px]">online_prediction</span><span>Predicciones</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="resultados-y-reportes" href="#"><span class="material-symbols-outlined text-[20px]">assessment</span><span>Resultados y reportes</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-outline-variant hover:bg-inverse-surface hover:text-surface transition-all font-label-md text-label-md" data-path="configuracion" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Configuración</span></a></nav></div><div class="p-space-sm m-space-sm bg-inverse-surface/60 rounded-lg"><div class="flex items-center gap-space-xs"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span><span class="font-label-sm text-label-sm text-surface font-semibold">FastAPI Backend</span></div><p class="font-code-sm text-code-sm text-outline-variant mt-space-xs">Conectado (latencia 24ms)</p></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest z-40 px-space-margin border-b border-surface-container-high flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm"><h1 class="font-headline-sm text-headline-sm text-on-surface">Panel de análisis</h1><span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm">Semillero de Datos &amp; ML</span></div><div class="relative hidden xl:flex items-center ml-space-md"><span class="material-symbols-outlined absolute left-3 text-secondary text-[18px]">search</span><input class="w-80 h-9 pl-9 pr-14 rounded-lg bg-surface text-on-surface font-body-sm text-body-sm border border-surface-container-high focus:outline-none focus:border-primary" placeholder="Buscar modelos, variables, reportes..." type="text"/><span class="absolute right-2 px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-[10px]">Ctrl + K</span></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-surface border border-surface-container-high"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span><span class="font-label-sm text-label-sm text-on-surface-variant">Pipeline ML: Operativo</span></div><button class="relative p-1.5 rounded-lg text-secondary hover:bg-surface hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary"></span></button><div class="flex items-center gap-space-sm pl-space-xs border-l border-surface-container-high"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCGGjPMx2fDDs8TS3oYOfP3anEen6DL1FSnIwkvn6SCbTOa1_y3uoRWVEtKil8A9fc1-E4DrTFG0EjK3904XfLadck3zjcO3zNHWvGUEA8JF8UyoBFCQH5ooi_ggOpEJ4A8bZ8cHALteyU7sVbz3YkogW4ezmL_Y9xARH1r_XkWc-DgJWY_a4RQ9eX7dtBDZ4pCfEVmO9skMDXjWlcgrFkNxdNYEvN_r1o8vxsJQ-wkXUkykslBg_I3w"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">Ing. Carlos Mendoza</span><span class="font-label-sm text-label-sm text-secondary leading-tight">Data Scientist / Analista</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="flex-1 pt-16 w-full px-space-margin pb-space-xl bg-surface"><div class="flex flex-col w-full">
+<!-- ENCABEZADO DE PÁGINA Y ACCIONES -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col gap-space-xs">
+<nav class="flex items-center gap-space-xs text-secondary font-label-sm text-label-sm tracking-wide">
+<span class="hover:text-primary cursor-pointer transition-colors">Proyecto de Ingeniería de Sistemas</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Pipeline de Ingesta y Limpieza</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Módulo 02: Limpieza de Datos</span>
+</nav>
+<div class="flex items-center gap-space-sm mt-space-xs">
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Procesamiento de datos</h1>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm">
+<span class="relative flex h-1.5 w-1.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
+</span>
+          Pipeline v1.4
+        </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+        Revisa la calidad de los datos y prepara la información para el análisis exploratorio y modelado predictivo del comportamiento de compra.
+      </p>
+</div>
+<!-- BOTONES DE ACCIÓN PRINCIPALES -->
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="inline-flex items-center gap-space-xs px-4 py-2 rounded-lg bg-surface-container-lowest text-on-surface font-label-lg text-label-lg shadow-sm hover:bg-surface-container hover:text-primary transition-all" id="btn-revert">
+<span class="material-symbols-outlined text-[18px]">undo</span>
+<span>Revertir transformaciones</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-5 py-2 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary transition-all" id="btn-process">
+<span class="material-symbols-outlined text-[20px]">auto_fix_high</span>
+<span>Preparar datos</span>
+<span class="ml-1 px-1.5 py-0.2 rounded bg-on-primary/20 text-on-primary font-code-sm text-[10px]">EXEC</span>
+</button>
+</div>
+</div>
+<!-- TARJETAS KPI DE CALIDAD -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-secondary">Total de registros</span>
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">dataset</span>
+</div>
+</div>
+<div>
+<div class="font-metric-xl text-metric-xl text-on-surface tracking-tight" id="kpi-records">12.330</div>
+<div class="flex items-center gap-1.5 mt-space-xs">
+<span class="material-symbols-outlined text-primary text-[15px]">memory</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Instancias evaluadas en memoria Pandas</span>
+</div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-secondary">Valores faltantes</span>
+<div class="w-9 h-9 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">search_off</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-metric-xl text-metric-xl text-on-surface tracking-tight">14</span>
+<span class="font-label-md text-label-md text-on-secondary-container bg-secondary-container/70 px-2 py-0.5 rounded-full">0.11%</span>
+</div>
+<div class="flex items-center gap-1.5 mt-space-xs">
+<span class="material-symbols-outlined text-outline text-[15px]">lightbulb</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Imputación sugerida por mediana</span>
+</div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-secondary">Registros duplicados</span>
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-metric-xl text-metric-xl text-on-surface tracking-tight">125</span>
+<span class="font-label-md text-label-md text-primary bg-primary-fixed px-2 py-0.5 rounded-full">1.01%</span>
+</div>
+<div class="flex items-center gap-1.5 mt-space-xs">
+<span class="material-symbols-outlined text-outline text-[15px]">rule</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Filas redundantes marcadas para descarte</span>
+</div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-secondary">Calidad general del dataset</span>
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="font-metric-xl text-metric-xl text-on-surface tracking-tight">98.8%</span>
+<span class="font-label-sm text-label-sm text-primary font-bold bg-surface-container-high px-2 py-0.5 rounded-full uppercase tracking-wider">Óptimo (PASS)</span>
+</div>
+<div class="flex items-center gap-1.5 mt-space-xs">
+<span class="material-symbols-outlined text-primary text-[15px]">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Aptitud excelente para modelos ML</span>
+</div>
+</div>
+</div>
+</div>
+<!-- PIPELINE STEPPER HORIZONTAL (6 ETAPAS) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm mb-space-lg">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-xs mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">alt_route</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Pipeline Secuencial de Preprocesamiento</h2>
+</div>
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-low px-2 py-1 rounded">DAG: clean_etl_pipeline_v2</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-space-sm relative">
+<!-- Paso 1 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-sm transition-shadow">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-code-sm text-code-sm font-bold text-primary">ETAPA 01</span>
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+</div>
+<h3 class="font-label-lg text-label-lg text-on-surface mb-space-xs">Dataset original</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">12.330 filas cargadas desde <code class="font-code-sm text-[11px] bg-surface-container px-1 py-0.5 rounded text-on-surface">online_shoppers.csv</code></p>
+<div class="inline-flex items-center gap-1 text-[11px] font-label-sm font-semibold text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Completado
+        </div>
+</div>
+<!-- Paso 2 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-sm transition-shadow">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-code-sm text-code-sm font-bold text-primary">ETAPA 02</span>
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+</div>
+<h3 class="font-label-lg text-label-lg text-on-surface mb-space-xs">Validación</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">Esquema Pandera verificado: tipos y rangos de variable conformes.</p>
+<div class="inline-flex items-center gap-1 text-[11px] font-label-sm font-semibold text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Completado
+        </div>
+</div>
+<!-- Paso 3 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-sm transition-shadow">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-code-sm text-code-sm font-bold text-primary">ETAPA 03</span>
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+</div>
+<h3 class="font-label-lg text-label-lg text-on-surface mb-space-xs">Detección de nulos</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">14 valores detectados en Administrative y ExitRates.</p>
+<div class="inline-flex items-center gap-1 text-[11px] font-label-sm font-semibold text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Resuelto
+        </div>
+</div>
+<!-- Paso 4 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-sm transition-shadow">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-code-sm text-code-sm font-bold text-primary">ETAPA 04</span>
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+</div>
+<h3 class="font-label-lg text-label-lg text-on-surface mb-space-xs">Detección duplicados</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">125 registros marcados con hash MD5 equivalente.</p>
+<div class="inline-flex items-center gap-1 text-[11px] font-label-sm font-semibold text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Deduplicado
+        </div>
+</div>
+<!-- Paso 5 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-sm transition-shadow">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-code-sm text-code-sm font-bold text-primary-container">ETAPA 05</span>
+<span class="material-symbols-outlined text-primary-container text-[18px]">settings_input_component</span>
+</div>
+<h3 class="font-label-lg text-label-lg text-on-surface mb-space-xs">Preparación variables</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">One-Hot Encoding para categorías y MinMaxScaler numérico.</p>
+<div class="inline-flex items-center gap-1 text-[11px] font-label-sm font-semibold text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Configurado
+        </div>
+</div>
+<!-- Paso 6 -->
+<div class="bg-surface-container-high rounded-lg p-space-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-sm transition-shadow">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-code-sm text-code-sm font-bold text-primary">ETAPA 06</span>
+<span class="material-symbols-outlined text-primary text-[18px]">cloud_done</span>
+</div>
+<h3 class="font-label-lg text-label-lg text-on-surface mb-space-xs">Dataset preparado</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">12.205 registros limpios listos para entrenamiento ML.</p>
+<div class="inline-flex items-center gap-1 text-[11px] font-label-sm font-bold text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Listo para exportar
+        </div>
+</div>
+</div>
+</div>
+<!-- SECCIÓN PRINCIPAL: TABLA DE CALIDAD Y PANEL DE RESUMEN (LAYOUT ASIMÉTRICO 8 / 4) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md mb-space-lg">
+<!-- COLUMNA IZQUIERDA: TABLA DE CALIDAD POR VARIABLE (8 COLUMNAS) -->
+<div class="lg:col-span-8 flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- CABECERA DE LA TABLA Y HERRAMIENTAS DE FILTRADO -->
+<div class="p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-container-lowest">
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Calidad de Datos por Variable</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-code-sm text-[11px]">18 Columnas</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Diagnóstico exhaustivo de tipos, valores ausentes y transformaciones sugeridas</p>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-secondary text-[16px]">search</span>
+<input class="pl-8 pr-3 py-1.5 rounded-lg bg-surface text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest transition-colors w-44 sm:w-56" id="table-search" placeholder="Filtrar variable..." type="text"/>
+</div>
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-1.5 rounded-lg bg-surface text-on-surface font-label-sm text-label-sm cursor-pointer focus:outline-none" id="type-filter">
+<option value="all">Todos los tipos</option>
+<option value="int">Numérico (int)</option>
+<option value="float">Numérico (float)</option>
+<option value="category">Categórico (object)</option>
+<option value="bool">Booleano</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 pointer-events-none text-secondary text-[16px]">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- CONTENEDOR TABLA CON SCROLL HORIZONTAL NATIVO -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-sm text-label-sm text-secondary uppercase tracking-wider h-10">
+<th class="px-space-md py-2">Variable / Atributo</th>
+<th class="px-space-md py-2">Valores faltantes</th>
+<th class="px-space-md py-2">Tipo de dato</th>
+<th class="px-space-md py-2">Estado y Acción</th>
+<th class="px-space-md py-2">Detalle Estadístico</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm text-on-surface">
+<!-- Fila 1: Administrative -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="px-space-md py-3 font-semibold font-code-sm text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">pin</span>
+                Administrative
+              </td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-on-surface">4</span>
+<span class="text-[11px] font-label-sm text-on-secondary-container bg-secondary-container px-1.5 py-0.2 rounded">0.03%</span>
+</div>
+</td>
+<td class="px-space-md py-3 font-code-sm text-secondary">int64</td>
+<td class="px-space-md py-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-secondary-container text-on-secondary-container font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+                  Imputación mediana
+                </span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-on-surface-variant">Rango [0 - 27] • μ=2.31</td>
+</tr>
+<!-- Fila 2: Administrative_Duration -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="px-space-md py-3 font-semibold font-code-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">timer</span>
+                Administrative_Duration
+              </td>
+<td class="px-space-md py-3">
+<span class="text-secondary font-code-sm">0 (0.00%)</span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-secondary">float64</td>
+<td class="px-space-md py-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low text-primary font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                  Limpio
+                </span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-on-surface-variant">Normalizado estándar</td>
+</tr>
+<!-- Fila 3: Informational -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="px-space-md py-3 font-semibold font-code-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">info</span>
+                Informational
+              </td>
+<td class="px-space-md py-3">
+<span class="text-secondary font-code-sm">0 (0.00%)</span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-secondary">int64</td>
+<td class="px-space-md py-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low text-primary font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                  Limpio
+                </span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-on-surface-variant">Sin anomalías de rango</td>
+</tr>
+<!-- Fila 4: ProductRelated -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="px-space-md py-3 font-semibold font-code-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">shopping_bag</span>
+                ProductRelated
+              </td>
+<td class="px-space-md py-3">
+<span class="text-secondary font-code-sm">0 (0.00%)</span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-secondary">int64</td>
+<td class="px-space-md py-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low text-primary font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                  Limpio
+                </span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-on-surface-variant">Distribución coherente (asimetría +)</td>
+</tr>
+<!-- Fila 5: ProductRelated_Duration -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="px-space-md py-3 font-semibold font-code-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">hourglass_bottom</span>
+                ProductRelated_Duration
+              </td>
+<td class="px-space-md py-3">
+<span class="text-secondary font-code-sm">0 (0.00%)</span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-secondary">float64</td>
+<td class="px-space-md py-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low text-primary font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                  Limpio
+                </span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-on-surface-variant">Outliers en cola derecha (Winsorize)</td>
+</tr>
+<!-- Fila 6: BounceRates -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="px-space-md py-3 font-semibold font-code-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">trending_down</span>
+                BounceRates
+              </td>
+<td class="px-space-md py-3">
+<span class="text-secondary font-code-sm">0 (0.00%)</span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-secondary">float64</td>
+<td class="px-space-md py-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low text-primary font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                  Limpio
+                </span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-on-surface-variant">Rango [0.0 - 0.20]</td>
+</tr>
+<!-- Fila 7: ExitRates -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="px-space-md py-3 font-semibold font-code-sm text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">logout</span>
+                ExitRates
+              </td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-on-surface">6</span>
+<span class="text-[11px] font-label-sm text-on-secondary-container bg-secondary-container px-1.5 py-0.2 rounded">0.05%</span>
+</div>
+</td>
+<td class="px-space-md py-3 font-code-sm text-secondary">float64</td>
+<td class="px-space-md py-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-secondary-container text-on-secondary-container font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">calculate</span>
+                  Imputación media
+                </span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-on-surface-variant">Rango [0.0 - 0.20] • μ=0.043</td>
+</tr>
+<!-- Fila 8: PageValues -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="px-space-md py-3 font-semibold font-code-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">monetization_on</span>
+                PageValues
+              </td>
+<td class="px-space-md py-3">
+<span class="text-secondary font-code-sm">0 (0.00%)</span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-secondary">float64</td>
+<td class="px-space-md py-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low text-primary font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                  Limpio
+                </span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-primary font-semibold">Predictor de alta correlación</td>
+</tr>
+<!-- Fila 9: Month -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="px-space-md py-3 font-semibold font-code-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">calendar_month</span>
+                Month
+              </td>
+<td class="px-space-md py-3">
+<span class="text-secondary font-code-sm">0 (0.00%)</span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-secondary">object (cat)</td>
+<td class="px-space-md py-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-high text-primary font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">grid_view</span>
+                  One-Hot (10 cols)
+                </span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-on-surface-variant">May, Nov, Mar predominantes</td>
+</tr>
+<!-- Fila 10: VisitorType -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="px-space-md py-3 font-semibold font-code-sm text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">group</span>
+                VisitorType
+              </td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-on-surface">4</span>
+<span class="text-[11px] font-label-sm text-on-secondary-container bg-secondary-container px-1.5 py-0.2 rounded">0.03%</span>
+</div>
+</td>
+<td class="px-space-md py-3 font-code-sm text-secondary">object (cat)</td>
+<td class="px-space-md py-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-secondary-container text-on-secondary-container font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">auto_fix_normal</span>
+                  Moda + Dummies (3)
+                </span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-on-surface-variant">Returning / New / Other</td>
+</tr>
+<!-- Fila 11: Weekend -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="px-space-md py-3 font-semibold font-code-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">event_available</span>
+                Weekend
+              </td>
+<td class="px-space-md py-3">
+<span class="text-secondary font-code-sm">0 (0.00%)</span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-secondary">bool</td>
+<td class="px-space-md py-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low text-primary font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                  Limpio
+                </span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-on-surface-variant">Booleano binario 0/1</td>
+</tr>
+<!-- Fila 12: Revenue [Target] -->
+<tr class="hover:bg-surface-container-low/70 transition-colors bg-tertiary-fixed/20">
+<td class="px-space-md py-3 font-bold font-code-sm text-tertiary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary">target</span>
+                Revenue [Target]
+              </td>
+<td class="px-space-md py-3">
+<span class="text-secondary font-code-sm font-semibold">0 (0.00%)</span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-tertiary font-bold">bool</td>
+<td class="px-space-md py-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-[11px] font-bold">
+<span class="material-symbols-outlined text-[14px]">flag</span>
+                  Variable Objetivo
+                </span>
+</td>
+<td class="px-space-md py-3 font-code-sm text-tertiary font-semibold">15.5% True (Desbalance 84.5/15.5)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- PIE DE TABLA: METADATOS PANDAS -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-xs text-secondary font-code-sm text-[12px]">
+<div class="flex items-center gap-4">
+<span>Memoria consumida: <strong>1.7 MB</strong></span>
+<span>•</span>
+<span>Columnas evaluadas: <strong>18/18</strong></span>
+<span>•</span>
+<span>Índice de completitud: <strong>99.89%</strong></span>
+</div>
+<div class="flex items-center gap-2 text-primary font-label-sm">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Sincronizado con memoria activa</span>
+</div>
+</div>
+</div>
+<!-- COLUMNA DERECHA: PANEL DE RESUMEN Y ESTADO DE TRANSFORMACIÓN (4 COLUMNAS) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- TARJETA PRINCIPAL DE ESTADO DEL PREPROCESAMIENTO -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div>
+<!-- Cabecera del panel con indicador circular -->
+<div class="flex items-start justify-between gap-space-sm mb-space-md">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-bold">Resumen de Ejecución</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">Transformación Lista</h3>
+</div>
+<!-- Inline SVG Progress Ring -->
+<div class="relative w-14 h-14 flex items-center justify-center shrink-0">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<circle class="text-surface-container" cx="18" cy="18" fill="none" r="15.9155" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary" cx="18" cy="18" fill="none" r="15.9155" stroke="currentColor" stroke-dasharray="100, 100" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-sm text-headline-sm font-bold text-primary leading-none">100%</span>
+</div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low mb-space-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">task_alt</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Preprocesamiento ejecutado con éxito</span>
+</div>
+<!-- LISTA DE TRANSFORMACIONES EJECUTADAS -->
+<div class="flex flex-col gap-space-sm mb-space-md">
+<div class="flex items-start gap-space-xs">
+<div class="w-5 h-5 rounded-full bg-surface-container-high text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Eliminación de duplicados exactos</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">125 registros descartados. Conteo final: <strong>12.205 instancias</strong>.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<div class="w-5 h-5 rounded-full bg-surface-container-high text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Imputación iterativa de nulos</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">14 registros resueltos con <code>SimpleImputer(strategy='median')</code>.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<div class="w-5 h-5 rounded-full bg-surface-container-high text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Codificación One-Hot Encoding</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Generación de 13 dummies para 'Month' y 'VisitorType' (sin trampa de variables).</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<div class="w-5 h-5 rounded-full bg-surface-container-high text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Normalización y Escalado MinMax</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Variables continuas acotadas a rango [0, 1] para SVM, KNN y Redes Neuronales.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<div class="w-5 h-5 rounded-full bg-surface-container-high text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Dataset exportable</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Estructurado en memoria y compatible con Scikit-Learn y XGBoost.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ACCIONES DENTRO DEL PANEL -->
+<div class="flex flex-col gap-space-xs pt-space-sm border-t border-surface-container">
+<button class="w-full inline-flex items-center justify-center gap-space-xs py-2 px-3 rounded-lg bg-surface text-secondary hover:text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors" id="btn-download-log">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+<span>Descargar log de transformaciones (.json)</span>
+</button>
+<a class="w-full inline-flex items-center justify-center gap-space-xs py-2.5 px-4 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow hover:bg-primary transition-all text-center" href="#">
+<span>Avanzar a Análisis exploratorio (EDA)</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- TARJETA INFORMATIVA / ESPECIFICACIONES TÉCNICAS -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-on-surface font-bold mb-space-xs flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">analytics</span>
+          Matriz de Salida (Shape)
+        </h4>
+<div class="grid grid-cols-2 gap-space-xs bg-surface-container-low p-space-sm rounded-lg mb-space-xs text-center">
+<div class="flex flex-col">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">12.205</span>
+<span class="font-label-sm text-label-sm text-secondary">Filas limpias</span>
+</div>
+<div class="flex flex-col border-l border-surface-container">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">29</span>
+<span class="font-label-sm text-label-sm text-secondary">Columnas finales</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+          Se crearon 11 variables dummies adicionales y se conservó la etiqueta binaria <code class="font-code-sm text-tertiary">Revenue</code> como vector $Y$.
+        </p>
+</div>
+</div>
+</div>
+<!-- PIE DE PÁGINA / NOTA DE DEMOSTRACIÓN ACADÉMICA -->
+<div class="w-full py-space-sm px-space-md rounded-lg bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs text-secondary font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">school</span>
+<span>Entorno experimental: <strong>Python 3.11</strong> • <strong>Scikit-Learn 1.3</strong> • <strong>Pandas 2.1</strong></span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-center sm:text-right">
+<span>Datos de demostración simulados para el <strong>Proyecto de Grado de Ingeniería de Sistemas</strong>.</span>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Micro-interacción: Búsqueda en vivo en la tabla de variables
+    const searchInput = document.getElementById('table-search');
+    const typeFilter = document.getElementById('type-filter');
+    const tableRows = document.querySelectorAll('tbody tr');
+
+    function filterTable() {
+      const query = (searchInput ? searchInput.value : '').toLowerCase();
+      const filterValue = typeFilter ? typeFilter.value : 'all';
+
+      tableRows.forEach(row => {
+        const textContent = row.textContent.toLowerCase();
+        const matchesQuery = textContent.includes(query);
+        let matchesType = true;
+
+        if (filterValue === 'int') {
+          matchesType = textContent.includes('int64');
+        } else if (filterValue === 'float') {
+          matchesType = textContent.includes('float64');
+        } else if (filterValue === 'category') {
+          matchesType = textContent.includes('object') || textContent.includes('dummies');
+        } else if (filterValue === 'bool') {
+          matchesType = textContent.includes('bool');
+        }
+
+        if (matchesQuery && matchesType) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    if (searchInput) searchInput.addEventListener('input', filterTable);
+    if (typeFilter) typeFilter.addEventListener('change', filterTable);
+
+    // Micro-interacción: Botón Revertir con feedback visual
+    const revertBtn = document.getElementById('btn-revert');
+    if (revertBtn) {
+      revertBtn.addEventListener('click', function() {
+        const originalText = revertBtn.innerHTML;
+        revertBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span><span>Revertiendo...</span>';
+        setTimeout(() => {
+          revertBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done</span><span>Restaurado</span>';
+          setTimeout(() => {
+            revertBtn.innerHTML = originalText;
+          }, 1500);
+        }, 800);
+      });
+    }
+
+    // Micro-interacción: Botón Preparar datos
+    const processBtn = document.getElementById('btn-process');
+    if (processBtn) {
+      processBtn.addEventListener('click', function() {
+        const originalHtml = processBtn.innerHTML;
+        processBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">rotate_right</span><span>Ejecutando Pipeline...</span>';
+        setTimeout(() => {
+          processBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check_circle</span><span>¡Completado 100%!</span>';
+          setTimeout(() => {
+            processBtn.innerHTML = originalHtml;
+          }, 2000);
+        }, 1200);
+      });
+    }
+
+    // Micro-interacción: Descarga simulada de log JSON
+    const downloadBtn = document.getElementById('btn-download-log');
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', function() {
+        const dummyLog = {
+          timestamp: new Date().toISOString(),
+          dataset: "online_shoppers.csv",
+          initial_shape: [12330, 18],
+          final_shape: [12205, 29],
+          transformations: [
+            { step: "deduplication", removed_rows: 125 },
+            { step: "imputation", attributes: ["Administrative", "ExitRates", "VisitorType"], method: "iterative_median" },
+            { step: "one_hot_encoding", categorical_cols: ["Month", "VisitorType"], dummy_cols_added: 13 },
+            { step: "minmax_scaling", range: [0, 1] }
+          ],
+          pipeline_status: "SUCCESS_PASS"
+        };
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dummyLog, null, 2));
+        const downloadAnchor = document.createElement('a');
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", "insightbuy_pipeline_log.json");
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+      });
+    }
+  })();
+</script></main></div></body></html>
